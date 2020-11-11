@@ -1,0 +1,4 @@
+io\nagarjun\repo\UserRepository.class
+io\nagarjun\model\User.class
+io\nagarjun\controller\UserController.class
+io\nagarjun\UserRegistration1Application.class
