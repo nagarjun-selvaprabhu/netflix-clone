@@ -294,10 +294,10 @@ footer {
 				<div class="sort">
 					<form:form action="sort" modelAttribute="sort">
 						<form:select path="genre">
-							<form:option value="Action" label="action" />
-							<form:option value="Drama" label="drama" />
-							<form:option value="Sport" label="sport" />
-							<form:option value="Crime" label="crime" />
+							<form:option value="action" label="action" />
+							<form:option value="drama" label="drama" />
+							<form:option value="sport" label="sport" />
+							<form:option value="crime" label="crime" />
 						</form:select>
 						<input type="submit" value="Submit" />
 					</form:form>

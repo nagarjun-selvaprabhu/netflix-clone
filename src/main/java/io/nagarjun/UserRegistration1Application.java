@@ -7,16 +7,23 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import io.nagarjun.repo.*;
 import io.nagarjun.model.*;
 
 @SpringBootApplication
+@ComponentScan
 public class UserRegistration1Application {
 	public static void main(String[] args) {
 		SpringApplication.run(UserRegistration1Application.class, args);
 	}
-
+	
+	
 	@Bean
 	public CommandLineRunner specificationsDemo(MovieRepository movieRepository) {
 		return args -> {
@@ -59,11 +66,11 @@ public class UserRegistration1Application {
 					new Movie("Night Shift", "Action", 8.9,
 							"https://github.com/carlosavilae/Netflix-Clone/blob/master/img/r6.PNG?raw=true")));
 
-			// search movies by `genre`
-			MovieSpecification msGenre = new MovieSpecification();
-			msGenre.add(new SearchCriteria("genre", "Action", SearchOperation.EQUAL));
-			List<Movie> msGenreList = movieRepository.findAll(msGenre);
-			msGenreList.forEach(System.out::println);
+//			// search movies by `genre`
+//			MovieSpecification msGenre = new MovieSpecification();
+//			msGenre.add(new SearchCriteria("genre", "Action", SearchOperation.EQUAL));
+//			List<Movie> msGenreList = movieRepository.findAll(msGenre);
+//			msGenreList.forEach(System.out::println);
 		};
 	}
 }

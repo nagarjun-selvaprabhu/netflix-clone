@@ -10,16 +10,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import io.nagarjun.MovieSpecification;
+import io.nagarjun.SearchCriteria;
+import io.nagarjun.SearchOperation;
 import io.nagarjun.model.Movie;
 import io.nagarjun.model.User;
 import io.nagarjun.model.cookie;
+import io.nagarjun.model.sort;
 import io.nagarjun.repo.MovieRepository;
 import io.nagarjun.repo.UserRepository;
+import io.nagarjun.repo.sortRepository;
 
 @Controller
 public class UserController {
@@ -28,11 +34,26 @@ public class UserController {
 
 	@Autowired
 	MovieRepository mov;
+	
+	@Autowired
+	sortRepository s;
 
 	@RequestMapping("/home")
 	public String home(Model model) {
+		sort sov = new sort();
 		model.addAttribute("movie", mov.findAll());
+		model.addAttribute("sort", sov);
 		return "home";
+	}
+
+	@RequestMapping("/sort")
+	public String sortedForm(@ModelAttribute("sort") sort sov,Model model) {
+		String genre = sov.getGenre();
+		MovieSpecification msGenre = new MovieSpecification();
+		msGenre.add(new SearchCriteria("genre", genre , SearchOperation.EQUAL));
+		List<Movie> msGenreList = s.findAll(msGenre);
+		model.addAttribute("movie",s.findAll(msGenre));
+		return "sortedHome";
 	}
 
 	@RequestMapping("/signup")
