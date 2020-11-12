@@ -22,3 +22,33 @@
 2020-11-12 17:23:14,501 DEBUG io.nagarjun.controller.UserController [http-nio-8080-exec-2] INSIDE /getRating METHOD
 2020-11-12 17:23:18,708 DEBUG io.nagarjun.controller.UserController [http-nio-8080-exec-3] INSIDE /rate METHOD
 2020-11-12 17:23:21,488 DEBUG io.nagarjun.controller.UserController [http-nio-8080-exec-4] INSIDE /rateFromCookie METHOD
+2020-11-12 17:35:28,358 INFO io.nagarjun.netflixClone [restartedMain] Starting netflixClone on DESKTOP-A8K8UB9 with PID 6476 (C:\Users\nagar\Desktop\java\User-Registration-Login-SpringBoot-master\Netflix Clone using SpringBoot\target\classes started by nagar in C:\Users\nagar\Desktop\java\User-Registration-Login-SpringBoot-master\Netflix Clone using SpringBoot)
+2020-11-12 17:35:28,363 DEBUG io.nagarjun.netflixClone [restartedMain] Running with Spring Boot v2.2.6.RELEASE, Spring v5.2.5.RELEASE
+2020-11-12 17:35:28,363 INFO io.nagarjun.netflixClone [restartedMain] No active profile set, falling back to default profiles: default
+2020-11-12 17:35:30,107 INFO org.apache.catalina.core.StandardService [restartedMain] Starting service [Tomcat]
+2020-11-12 17:35:30,110 INFO org.apache.catalina.core.StandardEngine [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.33]
+2020-11-12 17:35:30,382 INFO org.apache.jasper.servlet.TldScanner [restartedMain] At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2020-11-12 17:35:30,386 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [restartedMain] Initializing Spring embedded WebApplicationContext
+2020-11-12 17:35:30,432 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2020-11-12 17:35:30,694 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2020-11-12 17:35:30,856 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-11-12 17:35:30,931 INFO org.hibernate.Version [restartedMain] HHH000412: Hibernate ORM core version 5.4.12.Final
+2020-11-12 17:35:31,071 INFO org.hibernate.annotations.common.Version [restartedMain] HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-11-12 17:35:31,190 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2020-11-12 17:35:31,801 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-11-12 17:35:32,413 DEBUG io.nagarjun.WebConfig [restartedMain] INSIDE configureDefaultServletHandling METHOD
+2020-11-12 17:35:32,522 DEBUG io.nagarjun.WebConfig [restartedMain] INSIDE CONFIGURE DEFAULT RESOLVERS METHOD
+2020-11-12 17:35:32,900 INFO io.nagarjun.netflixClone [restartedMain] Started netflixClone in 4.944 seconds (JVM running for 5.453)
+2020-11-12 17:35:32,984 DEBUG io.nagarjun.netflixClone [restartedMain] INSIDE COMMANDLINERUNNER
+2020-11-12 17:35:32,984 DEBUG io.nagarjun.netflixClone [restartedMain] INSIDE MAIN
+2020-11-12 17:48:53,696 INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-11-12 17:48:53,789 DEBUG io.nagarjun.controller.UserController [http-nio-8080-exec-1] INSIDE / MAIN
+2020-11-12 17:49:07,818 DEBUG io.nagarjun.controller.UserController [http-nio-8080-exec-2] INSIDE /getLogin METHOD
+2020-11-12 17:49:16,607 DEBUG io.nagarjun.controller.UserController [http-nio-8080-exec-3] INSIDE /getSignup METHOD
+2020-11-12 17:49:41,974 DEBUG io.nagarjun.controller.UserController [http-nio-8080-exec-4] INSIDE /SORT METHOD
+2020-11-12 17:49:41,982 DEBUG io.nagarjun.MovieSpecification [http-nio-8080-exec-4] INSIDE ADD METHOD IN MOVIESPECIFICATION
+2020-11-12 18:01:38,077 DEBUG io.nagarjun.controller.UserController [http-nio-8080-exec-7] INSIDE / MAIN
+2020-11-12 18:01:42,091 DEBUG io.nagarjun.controller.UserController [http-nio-8080-exec-8] INSIDE /getRating METHOD
+2020-11-12 18:01:45,863 DEBUG io.nagarjun.controller.UserController [http-nio-8080-exec-9] INSIDE /rate METHOD
+2020-11-12 18:01:47,206 DEBUG io.nagarjun.controller.UserController [http-nio-8080-exec-10] INSIDE /rateFromCookie METHOD
+2020-11-12 18:01:52,769 DEBUG io.nagarjun.controller.UserController [http-nio-8080-exec-1] INSIDE / MAIN
