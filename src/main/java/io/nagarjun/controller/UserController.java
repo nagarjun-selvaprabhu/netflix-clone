@@ -2,13 +2,18 @@ package io.nagarjun.controller;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +27,7 @@ import io.nagarjun.SearchOperation;
 import io.nagarjun.model.Movie;
 import io.nagarjun.model.User;
 import io.nagarjun.model.cookie;
+import io.nagarjun.model.rating;
 import io.nagarjun.model.sort;
 import io.nagarjun.repo.MovieRepository;
 import io.nagarjun.repo.UserRepository;
@@ -56,6 +62,30 @@ public class UserController {
 		return "sortedHome";
 	}
 
+	@RequestMapping("/rating")
+	public String getRating(@ModelAttribute("rating") rating rat,Model model,HttpServletResponse res) {
+		return "rating";
+	}
+	
+	@RequestMapping("/rate")
+	public String rate(rating rat,HttpServletResponse res) {
+		int num = rat.getNumber();
+		String str = Integer.toString(num); 
+		Cookie cook = new Cookie( "rating", str);
+		res.addCookie(cook);
+		return "rate";
+	}
+	
+	@RequestMapping("/rateFromCookie")
+	public ModelAndView rateFromCookie(@CookieValue(value = "rating" , defaultValue = "3")String a,ModelAndView m) {
+		System.out.println(a);
+		ModelAndView mv=new ModelAndView("success");
+		mv.addObject("message" , " The Rating Stored in the cookie is "+a);
+		return mv;
+		
+	}
+	
+	
 	@RequestMapping("/signup")
 	public String getSignup() {
 		return "signup";
@@ -65,6 +95,7 @@ public class UserController {
 	public String getLogin() {
 		return "login";
 	}
+	
 
 	@RequestMapping(value = "/content")
 	public String content() {
@@ -106,7 +137,7 @@ public class UserController {
 
 	@PostMapping("/login")
 	public String login_user(@RequestParam("username") String username, @RequestParam("password") String password,
-			HttpSession session, ModelMap modelMap, Model model) {
+			HttpSession session, ModelMap modelMap, Model model,sort so) {
 
 		User auser = urepo.findByUsernamePassword(username, password);
 		String uname = auser.getUser_email();
@@ -117,16 +148,10 @@ public class UserController {
 			return "adminHome";
 		} else {
 
-			if (auser != null) {
-
-				if (username.equalsIgnoreCase(uname) && password.equalsIgnoreCase(upass)) {
-					session.setAttribute("username", username);
-					model.addAttribute("movie", mov.findAll());
-					return "home";
-				} else {
-					modelMap.put("error", "Invalid Account");
-					return "login";
-				}
+			if (username.equalsIgnoreCase(uname) && password.equalsIgnoreCase(upass)) {
+				session.setAttribute("username", username);
+				model.addAttribute("movie", mov.findAll());
+				return "home";
 			} else {
 				modelMap.put("error", "Invalid Account");
 				return "login";
