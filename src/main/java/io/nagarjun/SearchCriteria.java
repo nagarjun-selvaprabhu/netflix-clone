@@ -1,6 +1,11 @@
 package io.nagarjun;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class SearchCriteria {
+	private static final Logger logger = LoggerFactory.getLogger(SearchCriteria.class);
+	
 	@Override
 	public String toString() {
 		return "SearchCriteria [key=" + key + ", value=" + value + ", operation=" + operation + "]";

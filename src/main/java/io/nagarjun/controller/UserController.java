@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,6 +37,8 @@ import io.nagarjun.repo.sortRepository;
 
 @Controller
 public class UserController {
+	 private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+	
 	@Autowired
 	UserRepository urepo;
 
@@ -44,8 +48,9 @@ public class UserController {
 	@Autowired
 	sortRepository s;
 
-	@RequestMapping("/home")
+	@RequestMapping("/")
 	public String home(Model model) {
+		logger.debug("INSIDE / MAIN");
 		sort sov = new sort();
 		model.addAttribute("movie", mov.findAll());
 		model.addAttribute("sort", sov);
@@ -54,6 +59,7 @@ public class UserController {
 
 	@RequestMapping("/sort")
 	public String sortedForm(@ModelAttribute("sort") sort sov,Model model) {
+		logger.debug("INSIDE /SORT METHOD");
 		String genre = sov.getGenre();
 		MovieSpecification msGenre = new MovieSpecification();
 		msGenre.add(new SearchCriteria("genre", genre , SearchOperation.EQUAL));
@@ -64,11 +70,13 @@ public class UserController {
 
 	@RequestMapping("/rating")
 	public String getRating(@ModelAttribute("rating") rating rat,Model model,HttpServletResponse res) {
+		logger.debug("INSIDE /getRating METHOD");
 		return "rating";
 	}
 	
 	@RequestMapping("/rate")
 	public String rate(rating rat,HttpServletResponse res) {
+		logger.debug("INSIDE /rate METHOD");
 		int num = rat.getNumber();
 		String str = Integer.toString(num); 
 		Cookie cook = new Cookie( "rating", str);
@@ -78,6 +86,7 @@ public class UserController {
 	
 	@RequestMapping("/rateFromCookie")
 	public ModelAndView rateFromCookie(@CookieValue(value = "rating" , defaultValue = "3")String a,ModelAndView m) {
+		logger.debug("INSIDE /rateFromCookie METHOD");
 		System.out.println(a);
 		ModelAndView mv=new ModelAndView("success");
 		mv.addObject("message" , " The Rating Stored in the cookie is "+a);
@@ -88,22 +97,26 @@ public class UserController {
 	
 	@RequestMapping("/signup")
 	public String getSignup() {
+		logger.debug("INSIDE /getSignup METHOD");
 		return "signup";
 	}
 
 	@RequestMapping("/login")
 	public String getLogin() {
+		logger.debug("INSIDE /getLogin METHOD");
 		return "login";
 	}
 	
 
 	@RequestMapping(value = "/content")
 	public String content() {
+		logger.debug("INSIDE /getcontent METHOD");
 		return "content";
 	}
 
 	@PostMapping(value = "/content")
 	public String contentUpload(cookie cook, Model model) {
+		logger.debug("INSIDE /contentUpload METHOD");
 		String name = cook.getName();
 		String url = cook.getUrl();
 		System.out.println(name);
@@ -115,6 +128,7 @@ public class UserController {
 
 	@PostMapping("/addUser")
 	public String addUser(@RequestParam("user_email") String user_email, User user) {
+		logger.debug("INSIDE /addUser METHOD");
 		ModelAndView mv = new ModelAndView("success");
 		List<User> list = urepo.findByEMAIL(user_email);
 
@@ -132,12 +146,15 @@ public class UserController {
 
 	@GetMapping("/dummy")
 	public String dummy() {
+		logger.debug("INSIDE /dummy METHOD");
 		return "dummy";
 	}
 
 	@PostMapping("/login")
 	public String login_user(@RequestParam("username") String username, @RequestParam("password") String password,
 			HttpSession session, ModelMap modelMap, Model model,sort so) {
+		
+		logger.debug("INSIDE /login_user METHOD");
 
 		User auser = urepo.findByUsernamePassword(username, password);
 		String uname = auser.getUser_email();
@@ -162,6 +179,7 @@ public class UserController {
 
 	@GetMapping(value = "/logout")
 	public String logout_user(HttpSession session) {
+		logger.debug("INSIDE /logout_user METHOD");
 		session.removeAttribute("username");
 		session.invalidate();
 		return "redirect:/login";

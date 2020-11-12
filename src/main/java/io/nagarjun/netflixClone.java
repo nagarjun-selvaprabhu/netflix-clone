@@ -3,6 +3,8 @@ package io.nagarjun;
 import java.util.Arrays;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,9 +20,12 @@ import io.nagarjun.model.*;
 
 @SpringBootApplication
 @ComponentScan
-public class UserRegistration1Application {
+public class netflixClone {
+	private static final Logger logger = LoggerFactory.getLogger(netflixClone.class);
+	
 	public static void main(String[] args) {
-		SpringApplication.run(UserRegistration1Application.class, args);
+		SpringApplication.run(netflixClone.class, args);
+		logger.debug("INSIDE MAIN");
 	}
 	
 	
@@ -65,7 +70,8 @@ public class UserRegistration1Application {
 							"https://github.com/carlosavilae/Netflix-Clone/blob/master/img/r5.PNG?raw=true"),
 					new Movie("Night Shift", "Action", 8.9,
 							"https://github.com/carlosavilae/Netflix-Clone/blob/master/img/r6.PNG?raw=true")));
-
+			
+			logger.debug("INSIDE COMMANDLINERUNNER");
 //			// search movies by `genre`
 //			MovieSpecification msGenre = new MovieSpecification();
 //			msGenre.add(new SearchCriteria("genre", "Action", SearchOperation.EQUAL));

@@ -1,5 +1,7 @@
 package io.nagarjun;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.jpa.domain.Specification;
 
 import io.nagarjun.model.Movie;
@@ -12,7 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MovieSpecification implements Specification<Movie> {
-
+	
+	private static final Logger logger = LoggerFactory.getLogger(MovieSpecification.class);
+	
 	private List<SearchCriteria> list;
 
 	public MovieSpecification() {
@@ -20,6 +24,7 @@ public class MovieSpecification implements Specification<Movie> {
 	}
 
 	public void add(SearchCriteria criteria) {
+		logger.debug("INSIDE ADD METHOD IN MOVIESPECIFICATION");
 		list.add(criteria);
 	}
 

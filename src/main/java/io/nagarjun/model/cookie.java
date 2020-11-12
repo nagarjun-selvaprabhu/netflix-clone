@@ -1,8 +1,13 @@
 package io.nagarjun.model;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import io.nagarjun.controller.UserController;
 
 public class cookie {
+	
+	 private static final Logger logger = LoggerFactory.getLogger(cookie.class);
 	
 	private String name;
 	private String url;

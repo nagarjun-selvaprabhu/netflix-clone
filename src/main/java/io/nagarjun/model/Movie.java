@@ -7,9 +7,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @Entity
 @Table(name = "movie")
 public class Movie implements Serializable {
+	 private static final Logger logger = LoggerFactory.getLogger(Movie.class);
+	
 	@Override
 	public String toString() {
 		return "Movie [id=" + id + ", title=" + title + ", genre=" + genre + ", rating=" + rating + ", URL=" + url;
